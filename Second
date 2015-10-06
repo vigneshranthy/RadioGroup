@@ -1,0 +1,51 @@
+package com.example.ajay.menu;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+
+public class Second extends Activity  {
+    RadioGroup ggroup;
+    TextView txt;
+    EditText editText;
+    Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout);
+        txt = (TextView) findViewById(R.id.txt);
+        editText = (EditText) findViewById(R.id.editText);
+        ggroup = (RadioGroup) findViewById(R.id.ggroup);
+        ggroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.leftradio:
+                        txt.setGravity(Gravity.LEFT);
+                        break;
+                    case R.id.centerradio:
+                        txt.setGravity(Gravity.CENTER);
+                        break;
+                    case R.id.rightradio:
+                        txt.setGravity(Gravity.RIGHT);
+                        break;
+                }
+            }
+        });
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txt.setText(editText.getText());
+            }
+        });
+    }}
